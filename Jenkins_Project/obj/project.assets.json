@@ -319,11 +319,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\neha-nigam\\jenkins_demo\\Jenkins_Project\\Jenkins_Project\\Jenkins_Project.csproj",
+      "projectUniqueName": "C:\\neha-nigam\\jenkins_Project\\Jenkins_Project\\Jenkins_Project\\Jenkins_Project.csproj",
       "projectName": "Jenkins_Project",
-      "projectPath": "C:\\neha-nigam\\jenkins_demo\\Jenkins_Project\\Jenkins_Project\\Jenkins_Project.csproj",
+      "projectPath": "C:\\neha-nigam\\jenkins_Project\\Jenkins_Project\\Jenkins_Project\\Jenkins_Project.csproj",
       "packagesPath": "C:\\Users\\nehanigam01\\.nuget\\packages\\",
-      "outputPath": "C:\\neha-nigam\\jenkins_demo\\Jenkins_Project\\Jenkins_Project\\obj\\",
+      "outputPath": "C:\\neha-nigam\\jenkins_Project\\Jenkins_Project\\Jenkins_Project\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

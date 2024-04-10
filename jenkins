@@ -1,0 +1,45 @@
+pipeline {
+    agent any
+    environment {
+        // GitHub Container Registry credentials
+        registryName = "nehanigam01/jenkins" 
+        registryCredentialsId = 'docker-hub'  // Set up in Jenkins Credentials with your GitHub Container Registry username and token
+        imageName = "${registryName}:latest"
+    }
+    stages {
+        stage('Git Checkout') {
+            steps {
+                echo 'Git checkout started'
+                git url: 'https://github.com/Neha20192/Jenkins.git'
+                echo 'Git checkout finished'
+            }
+        }
+        stage('Build Docker Image') {
+            steps {
+                echo 'Building Docker image'
+                script {
+                    docker.build(imageName)
+                }
+            }
+        }
+        stage('Run Docker Container') {
+            steps {
+                echo 'Running Docker container'
+                script {
+                    docker.image(imageName).run("-p 8089:80") // Example command to run the container in detached mode and expose port 8080
+                }
+            }
+        }
+        stage('Push Docker Image to GitHub Container Registry') {
+            steps {
+                echo 'Pushing Docker image to GitHub Container Registry'
+                script {
+                    withDockerRegistry(credentialsId: registryCredentialsId, registryUrl: "https://hub.docker.com/")
+                    {
+                        docker.image(imageName).push()
+                    }
+                }
+            }
+        }
+    }
+}
