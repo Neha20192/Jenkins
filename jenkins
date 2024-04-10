@@ -5,6 +5,7 @@ pipeline {
         registryName = "nehanigam01/jenkins" 
         registryCredentialsId = 'docker-hub'  // Set up in Jenkins Credentials with your GitHub Container Registry username and token
         imageName = "${registryName}:latest"
+        containerName = "jenkins-project"  // Define container name
     }
     stages {
         stage('Git Checkout') {
@@ -26,7 +27,9 @@ pipeline {
             steps {
                 echo 'Running Docker container'
                 script {
-                    docker.image(imageName).run("-p 8089:80") // Example command to run the container in detached mode and expose port 8080
+                    sh 'docker stop ${containerName} || true'
+                    sh 'docker rm -f ${containerName} || true'
+                    docker.image(imageName).run("--name ${containerName} -p 8089:80") // Example command to run the container in detached mode and expose port 8080
                 }
             }
         }
