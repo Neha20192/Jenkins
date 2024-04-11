@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace Jenkins_Project.Controllers
 {
@@ -29,5 +30,12 @@ namespace Jenkins_Project.Controllers
             })
             .ToArray();
         }
+
+        [HttpGet("/summaries")]
+        public ActionResult<string[]> GetSummaries()
+        {
+            return Summaries;
+        }
+
     }
 }
